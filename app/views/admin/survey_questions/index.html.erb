@@ -1,0 +1,28 @@
+<% title "Survey Builder" %>
+
+<table class="hor-minimalist-b" width="100%">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Response Type</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @survey_questions.each do |survey_question| %>
+      <tr class="<%= cycle('odd', 'even') %>">
+        <td><%=h survey_question.question %></td>
+        <td><%=h survey_question.response_type %></td>
+        <td>
+          <%= link_to "Edit", edit_admin_survey_survey_question_path(@survey, survey_question) %> |
+          <%= link_to "Destroy", [:admin, @survey, survey_question], :confirm => 'Are you sure?', :method => :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+  <%= link_to "New Survey Question", new_admin_survey_survey_question_path(@survey) %> |
+  <%= link_to "Back to Surveys", admin_surveys_path %>
+</p>

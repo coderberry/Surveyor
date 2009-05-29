@@ -1,0 +1,16 @@
+<% form_for [:admin, @survey, @survey_question] do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :question %><br />
+    <%= f.text_field :question, :size => 80 %>
+  </p>
+  <p>
+    <%= f.label :response_type %><br />
+    <%= f.select :response_type, SurveyQuestion::RESPONSE_TYPES, {}, { :onchange => "toggleSurveyQuestionOptions()" } %>
+  </p>
+  <div id="survey_question_options">
+    <%= render :partial => 'survey_question_option', :collection => @survey_question.survey_question_options %>
+  </div>
+  <p><%= add_survey_question_option_link "Add an option" %></p>
+  <p><%= f.submit "Save Changes" %> or <%= link_to "Cancel", admin_survey_survey_questions_path(@survey) %></p>
+<% end %>

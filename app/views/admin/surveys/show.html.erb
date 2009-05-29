@@ -1,0 +1,19 @@
+<% title @survey.name %>
+
+<% @survey.survey_questions.each do |question| %>
+  <h3><%=h question.question %></h3>
+  <% if question.response_type == "OPTION" %>
+    <% question.survey_question_options.each do |option| %>
+      <% if question.responses.count > 0 %>
+        <%= number_to_percentage(option.answers.count.to_f / question.responses.count.to_f, :precision => 0) %> (<%= option.answers.count %>)
+      <% end %>
+      <%= option.question_response %><br/>
+    <% end %>
+  <% else %>
+    <% question.responses.each do |response| %>
+      <p><%=h response.open_response %></p>
+    <% end %>
+  <% end %>
+<% end %>
+
+<p><%= link_to "Back to Surveys", admin_surveys_path %></p>

@@ -1,0 +1,19 @@
+<% title @survey.name %>
+
+<% form_tag :action => "questions" do %>
+  <% @survey.survey_questions.each do |question| %>
+    <h3><%=h "#{@survey.survey_questions.index(question)+1}. #{question.question}" %></h3>
+    
+    <% if question.response_type == "OPTION" %>
+      <% question.survey_question_options.each do |option| %>
+        <%= radio_button(@survey.id, question.id, option.id) %> <%= option.question_response %><br/>
+      <% end %>
+      
+    <% else %>
+      <%= text_area_tag("#{@survey.id}[#{question.id}]", "", :cols => 80, :rows => 5) %>
+      
+    <% end %>
+  <% end %>
+  
+  <p><%= submit_tag "Submit Responses" %></p>
+<% end %>

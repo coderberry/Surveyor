@@ -1,0 +1,120 @@
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (2.9ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (1.8ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateSurveys (20090529152756)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "surveys" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255)) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090529152756')[0m
+Migrating to CreateSurveyQuestions (20090529152851)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TABLE "survey_questions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "survey_id" integer, "question" varchar(255), "response_type" varchar(255)) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCREATE INDEX "index_survey_questions_on_survey_id" ON "survey_questions" ("survey_id")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090529152851')[0m
+Migrating to CreateSurveyees (20090529153016)
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "surveyees" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "survey_id" integer, "name" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCREATE INDEX "index_surveyees_on_survey_id" ON "surveyees" ("survey_id")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090529153016')[0m
+Migrating to CreateSurveyQuestionOptions (20090529153132)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "survey_question_options" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "survey_question_id" integer, "question_response" varchar(255)) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCREATE INDEX "index_survey_question_options_on_survey_question_id" ON "survey_question_options" ("survey_question_id")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090529153132')[0m
+Migrating to CreateSurveyeeAnswers (20090529153320)
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "surveyee_answers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "survey_question_id" integer, "surveyee_id" integer, "survey_question_option_id" integer, "open_response" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCREATE INDEX "index_surveyee_answers_on_survey_question_id" ON "surveyee_answers" ("survey_question_id")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE INDEX "index_surveyee_answers_on_surveyee_id" ON "surveyee_answers" ("surveyee_id")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCREATE INDEX "index_surveyee_answers_on_survey_question_option_id" ON "surveyee_answers" ("survey_question_option_id")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090529153320')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("survey_question_options")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_survey_question_options_on_survey_question_id')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("survey_questions")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_survey_questions_on_survey_id')[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("surveyee_answers")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_surveyee_answers_on_survey_question_option_id')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('index_surveyee_answers_on_surveyee_id')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_surveyee_answers_on_survey_question_id')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("surveyees")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_surveyees_on_survey_id')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("surveys")[0m
+  [4;36;1mSurvey Load (0.1ms)[0m   [0;1mSELECT * FROM "surveys" LIMIT 1[0m
+  [4;35;1mSurvey Exists (0.2ms)[0m   [0mSELECT "surveys".id FROM "surveys" WHERE ("surveys"."name" IS NULL) LIMIT 1[0m
+  [4;36;1mSurvey Load (0.1ms)[0m   [0;1mSELECT * FROM "surveys" LIMIT 1[0m
+  [4;35;1mSurvey Exists (0.2ms)[0m   [0mSELECT "surveys".id FROM "surveys" WHERE ("surveys"."name" IS NULL) LIMIT 1[0m
+  [4;36;1mSurvey Load (0.1ms)[0m   [0;1mSELECT * FROM "surveys" LIMIT 1[0m
+  [4;35;1mSurvey Exists (0.2ms)[0m   [0mSELECT "surveys".id FROM "surveys" WHERE ("surveys"."name" IS NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (2.3ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (1.6ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateSurveys (20090529152756)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "surveys" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255)) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090529152756')[0m
+Migrating to CreateSurveyQuestions (20090529152851)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TABLE "survey_questions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "survey_id" integer, "question" varchar(255), "response_type" varchar(255)) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCREATE INDEX "index_survey_questions_on_survey_id" ON "survey_questions" ("survey_id")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090529152851')[0m
+Migrating to CreateSurveyees (20090529153016)
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "surveyees" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "survey_id" integer, "name" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCREATE INDEX "index_surveyees_on_survey_id" ON "surveyees" ("survey_id")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090529153016')[0m
+Migrating to CreateSurveyQuestionOptions (20090529153132)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "survey_question_options" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "survey_question_id" integer, "question_response" varchar(255)) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCREATE INDEX "index_survey_question_options_on_survey_question_id" ON "survey_question_options" ("survey_question_id")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090529153132')[0m
+Migrating to CreateSurveyeeAnswers (20090529153320)
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "surveyee_answers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "survey_question_id" integer, "surveyee_id" integer, "survey_question_option_id" integer, "open_response" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCREATE INDEX "index_surveyee_answers_on_survey_question_id" ON "surveyee_answers" ("survey_question_id")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCREATE INDEX "index_surveyee_answers_on_surveyee_id" ON "surveyee_answers" ("surveyee_id")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCREATE INDEX "index_surveyee_answers_on_survey_question_option_id" ON "surveyee_answers" ("survey_question_option_id")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090529153320')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("survey_question_options")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_survey_question_options_on_survey_question_id')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("survey_questions")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_survey_questions_on_survey_id')[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("surveyee_answers")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_surveyee_answers_on_survey_question_option_id')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('index_surveyee_answers_on_surveyee_id')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_surveyee_answers_on_survey_question_id')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("surveyees")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_surveyees_on_survey_id')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("surveys")[0m
+  [4;36;1mSurvey Load (0.1ms)[0m   [0;1mSELECT * FROM "surveys" LIMIT 1[0m
+  [4;35;1mSurvey Exists (0.2ms)[0m   [0mSELECT "surveys".id FROM "surveys" WHERE ("surveys"."name" IS NULL) LIMIT 1[0m
+  [4;36;1mSurvey Load (0.2ms)[0m   [0;1mSELECT * FROM "surveys" LIMIT 1[0m
+  [4;35;1mSurvey Exists (0.2ms)[0m   [0mSELECT "surveys".id FROM "surveys" WHERE ("surveys"."name" IS NULL) LIMIT 1[0m
+  [4;36;1mSurvey Load (0.1ms)[0m   [0;1mSELECT * FROM "surveys" LIMIT 1[0m
+  [4;35;1mSurvey Exists (0.2ms)[0m   [0mSELECT "surveys".id FROM "surveys" WHERE ("surveys"."name" IS NULL) LIMIT 1[0m
+  [4;36;1mSurvey Load (0.1ms)[0m   [0;1mSELECT * FROM "surveys" LIMIT 1[0m
+  [4;35;1mSurvey Exists (0.2ms)[0m   [0mSELECT "surveys".id FROM "surveys" WHERE ("surveys"."name" IS NULL) LIMIT 1[0m

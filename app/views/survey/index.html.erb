@@ -1,0 +1,18 @@
+<% title @survey.name %>
+
+<h3>Please Register</h3>
+
+<% form_for @surveyee, :url => { :action => "index" } do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br/>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :email %><br/>
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.submit "Begin Survey" %>
+  </p>
+<% end %>

@@ -1,0 +1,8 @@
+<div class="survey_question_option">
+  <% fields_for_survey_question_option(survey_question_option) do |survey_question_option_form| %>
+    <p>
+      Option: <%= survey_question_option_form.text_field :question_response %>
+      <%= link_to_function "remove", "$(this).parents('.survey_question_option').remove()" %>
+    </p>
+  <% end %>
+</div>
