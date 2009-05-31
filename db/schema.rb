@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090529153320) do
+ActiveRecord::Schema.define(:version => 20090531230831) do
 
   create_table "survey_question_options", :force => true do |t|
     t.integer "survey_question_id"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20090529153320) do
   create_table "surveys", :force => true do |t|
     t.string "name"
     t.string "unique_code"
+    t.text   "description"
   end
 
 end

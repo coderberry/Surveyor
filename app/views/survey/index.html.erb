@@ -1,18 +1,27 @@
 <% title @survey.name %>
 
-<h3>Please Register</h3>
+<div class="fl" style="width: 59%">
+  <p><%= RedCloth.new(@survey.description).to_html %></p>
+</div>
 
-<% form_for @surveyee, :url => { :action => "index" } do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :name %><br/>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :email %><br/>
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.submit "Begin Survey" %>
-  </p>
-<% end %>
+<div class="fr" style="width: 39%">
+  <fieldset class="form">
+    <h3>Please Register</h3>
+    <% form_for @surveyee, :url => { :action => "index" } do |f| %>
+      <%= f.error_messages %>
+      <p>
+        <%= f.label :name %><br/>
+        <%= f.text_field :name %>
+      </p>
+      <p>
+        <%= f.label :email %><br/>
+        <%= f.text_field :email %>
+      </p>
+      <p>
+        <%= f.submit "Begin Survey" %>
+      </p>
+    <% end %>
+  </fieldset>
+</div>
+
+<div class="clear"></div>

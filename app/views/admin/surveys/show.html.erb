@@ -1,5 +1,9 @@
 <% title @survey.name %>
 
+<p>
+  <%= RedCloth.new(@survey.description).to_html %>
+</p>
+
 <% @survey.survey_questions.each do |question| %>
   <h3><%=h question.question %></h3>
   <% if question.response_type == "OPTION" %>

@@ -5978,3 +5978,411 @@ Processing SurveyController#index (for 127.0.0.1 at 2009-05-29 13:03:44) [GET]
 Rendering template within layouts/application
 Rendering survey/index
 Completed in 13ms (View: 3, DB: 0) | 200 OK [http://localhost/survey/143f9f7499a07e4621c7d43a868a93ce78433d59]
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateSurveys (20090529152756)
+Migrating to CreateSurveyQuestions (20090529152851)
+Migrating to CreateSurveyees (20090529153016)
+Migrating to CreateSurveyQuestionOptions (20090529153132)
+Migrating to CreateSurveyeeAnswers (20090529153320)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("survey_question_options")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('index_survey_question_options_on_survey_question_id')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("survey_questions")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('index_survey_questions_on_survey_id')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("surveyee_answers")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('index_surveyee_answers_on_survey_question_option_id')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_surveyee_answers_on_surveyee_id')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('index_surveyee_answers_on_survey_question_id')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("surveyees")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('index_surveyees_on_survey_id')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("surveys")[0m
+  [4;36;1mSurvey Exists (0.1ms)[0m   [0;1mSELECT "surveys".id FROM "surveys" WHERE ("surveys"."name" = 'Workshop Invitational Survey') LIMIT 1[0m
+  [4;35;1mSurvey Exists (0.1ms)[0m   [0mSELECT "surveys".id FROM "surveys" WHERE ("surveys"."unique_code" = '3d6f242b70d0b7d3f1cbdbe8bdf6cd04d7a5d46a') LIMIT 1[0m
+
+
+Processing AdminController#index (for 127.0.0.1 at 2009-05-31 17:08:10) [GET]
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 1ms (View: 0, DB: 0) | 401 Unauthorized [http://localhost/admin]
+
+
+Processing AdminController#index (for 127.0.0.1 at 2009-05-31 17:08:14) [GET]
+Redirected to http://localhost:3000/admin/surveys
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/admin]
+
+
+Processing Admin::SurveysController#index (for 127.0.0.1 at 2009-05-31 17:08:14) [GET]
+  [4;36;1mSurvey Load (0.6ms)[0m   [0;1mSELECT * FROM "surveys" [0m
+Rendering template within layouts/application
+Rendering admin/surveys/index
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "surveyees" WHERE ("surveyees".survey_id = 1) [0m
+Completed in 63ms (View: 53, DB: 1) | 200 OK [http://localhost/admin/surveys]
+
+
+Processing Admin::SurveysController#edit (for 127.0.0.1 at 2009-05-31 17:08:16) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mSurvey Load (0.1ms)[0m   [0;1mSELECT * FROM "surveys" WHERE ("surveys"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering admin/surveys/edit
+Rendered admin/surveys/_form (1.9ms)
+Completed in 12ms (View: 7, DB: 0) | 200 OK [http://localhost/admin/surveys/1/edit]
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateSurveys (20090529152756)
+Migrating to CreateSurveyQuestions (20090529152851)
+Migrating to CreateSurveyees (20090529153016)
+Migrating to CreateSurveyQuestionOptions (20090529153132)
+Migrating to CreateSurveyeeAnswers (20090529153320)
+Migrating to AddDescriptionToSurveys (20090531230831)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mALTER TABLE "surveys" ADD "description" text[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090531230831')[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("survey_question_options")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('index_survey_question_options_on_survey_question_id')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("survey_questions")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('index_survey_questions_on_survey_id')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("surveyee_answers")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('index_surveyee_answers_on_survey_question_option_id')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_surveyee_answers_on_surveyee_id')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('index_surveyee_answers_on_survey_question_id')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("surveyees")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('index_surveyees_on_survey_id')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("surveys")[0m
+
+
+Processing Admin::SurveysController#edit (for 127.0.0.1 at 2009-05-31 17:09:27) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mSurvey Load (0.2ms)[0m   [0;1mSELECT * FROM "surveys" WHERE ("surveys"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering admin/surveys/edit
+Rendered admin/surveys/_form (3.0ms)
+Completed in 23ms (View: 13, DB: 0) | 200 OK [http://localhost/admin/surveys/1/edit]
+
+
+Processing Admin::SurveysController#update (for 127.0.0.1 at 2009-05-31 17:09:42) [PUT]
+  Parameters: {"commit"=>"Save Changes", "authenticity_token"=>"J8oajAHyhSv6gsWTlFa7uGSYiJtjaMZ3T13Ur3ISOLo=", "id"=>"1", "survey"=>{"name"=>"Workshop Invitational Survey", "description"=>"A free workshop covering the explosively productive web application framework Ruby on Rails. Learn Ruby on Rails in 10 sessions by local experts with 10+ years of experience. The following sessions will prepare you for a more agile and productive way to create web applications using Ruby on Rails:\r\n\r\n* Ruby Intro\r\n* Rails Intro\r\n* Behavior Driven Development\r\n* ActiveRecord 1\r\n* ActiveRecord 2\r\n* ActionPack 1\r\n* ActionPack 2\r\n* ActionPack 3\r\n* ActiveResource & ActionMailer\r\n* Deployment"}}
+  [4;35;1mSurvey Load (0.1ms)[0m   [0mSELECT * FROM "surveys" WHERE ("surveys"."id" = 1) [0m
+  [4;36;1mSurvey Exists (0.1ms)[0m   [0;1mSELECT "surveys".id FROM "surveys" WHERE ("surveys"."name" = 'Workshop Invitational Survey' AND "surveys".id <> 1) LIMIT 1[0m
+  [4;35;1mSurvey Exists (0.1ms)[0m   [0mSELECT "surveys".id FROM "surveys" WHERE ("surveys"."unique_code" = '143f9f7499a07e4621c7d43a868a93ce78433d59' AND "surveys".id <> 1) LIMIT 1[0m
+  [4;36;1mSurvey Update (0.4ms)[0m   [0;1mUPDATE "surveys" SET "description" = 'A free workshop covering the explosively productive web application framework Ruby on Rails. Learn Ruby on Rails in 10 sessions by local experts with 10+ years of experience. The following sessions will prepare you for a more agile and productive way to create web applications using Ruby on Rails:
+
+* Ruby Intro
+* Rails Intro
+* Behavior Driven Development
+* ActiveRecord 1
+* ActiveRecord 2
+* ActionPack 1
+* ActionPack 2
+* ActionPack 3
+* ActiveResource & ActionMailer
+* Deployment' WHERE "id" = 1[0m
+Redirected to http://localhost:3000/admin/surveys
+Completed in 56ms (DB: 1) | 302 Found [http://localhost/admin/surveys/1]
+
+
+Processing Admin::SurveysController#index (for 127.0.0.1 at 2009-05-31 17:09:42) [GET]
+  [4;35;1mSurvey Load (0.5ms)[0m   [0mSELECT * FROM "surveys" [0m
+Rendering template within layouts/application
+Rendering admin/surveys/index
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "surveyees" WHERE ("surveyees".survey_id = 1) [0m
+Completed in 14ms (View: 9, DB: 1) | 200 OK [http://localhost/admin/surveys]
+
+
+Processing Admin::SurveysController#show (for 127.0.0.1 at 2009-05-31 17:09:44) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mSurvey Load (0.1ms)[0m   [0mSELECT * FROM "surveys" WHERE ("surveys"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering admin/surveys/show
+  [4;36;1mSurveyQuestion Load (0.4ms)[0m   [0;1mSELECT * FROM "survey_questions" WHERE ("survey_questions".survey_id = 1) [0m
+  [4;35;1mSurveyQuestionOption Load (0.2ms)[0m   [0mSELECT * FROM "survey_question_options" WHERE ("survey_question_options".survey_question_id = 1) [0m
+  [4;36;1mSurveyeeAnswer Load (0.3ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 1) [0m
+  [4;35;1mSurveyeeAnswer Load (0.2ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 1) [0m
+  [4;35;1mSurveyeeAnswer Load (0.1ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 2) [0m
+  [4;36;1mSurveyQuestionOption Load (0.2ms)[0m   [0;1mSELECT * FROM "survey_question_options" WHERE ("survey_question_options".survey_question_id = 2) [0m
+  [4;35;1mSurveyeeAnswer Load (0.2ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 2) [0m
+  [4;36;1mSurveyeeAnswer Load (0.2ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 3) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 3) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 2) [0m
+  [4;36;1mSurveyeeAnswer Load (0.1ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 4) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 4) [0m
+  [4;35;1mSurveyQuestionOption Load (0.2ms)[0m   [0mSELECT * FROM "survey_question_options" WHERE ("survey_question_options".survey_question_id = 3) [0m
+  [4;36;1mSurveyeeAnswer Load (0.2ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 3) [0m
+  [4;35;1mSurveyeeAnswer Load (0.1ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 5) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 3) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 5) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 3) [0m
+  [4;35;1mSurveyeeAnswer Load (0.2ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 3) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 3) [0m
+  [4;35;1mSurveyeeAnswer Load (0.1ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 7) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 3) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 7) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 3) [0m
+  [4;35;1mSurveyeeAnswer Load (0.2ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 8) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 3) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 8) [0m
+  [4;36;1mSurveyQuestionOption Load (0.2ms)[0m   [0;1mSELECT * FROM "survey_question_options" WHERE ("survey_question_options".survey_question_id = 4) [0m
+  [4;35;1mSurveyeeAnswer Load (0.2ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 4) [0m
+  [4;36;1mSurveyeeAnswer Load (0.2ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 9) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 4) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 9) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 4) [0m
+  [4;36;1mSurveyeeAnswer Load (0.1ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 10) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 4) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 10) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 4) [0m
+  [4;36;1mSurveyeeAnswer Load (0.2ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 11) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 4) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 11) [0m
+  [4;35;1mSurveyQuestionOption Load (0.2ms)[0m   [0mSELECT * FROM "survey_question_options" WHERE ("survey_question_options".survey_question_id = 5) [0m
+  [4;36;1mSurveyeeAnswer Load (0.2ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 5) [0m
+  [4;35;1mSurveyeeAnswer Load (0.2ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 12) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 12) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 5) [0m
+  [4;35;1mSurveyeeAnswer Load (0.1ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 13) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 13) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 5) [0m
+  [4;35;1mSurveyeeAnswer Load (0.2ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 14) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 14) [0m
+  [4;36;1mSurveyQuestionOption Load (0.2ms)[0m   [0;1mSELECT * FROM "survey_question_options" WHERE ("survey_question_options".survey_question_id = 6) [0m
+  [4;35;1mSurveyeeAnswer Load (0.2ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 6) [0m
+  [4;36;1mSurveyeeAnswer Load (0.2ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 15) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 15) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 6) [0m
+  [4;36;1mSurveyeeAnswer Load (0.1ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 16) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 16) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 6) [0m
+  [4;36;1mSurveyeeAnswer Load (0.2ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 17) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 6) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 17) [0m
+  [4;35;1mSurveyeeAnswer Load (0.2ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 7) [0m
+Completed in 59ms (View: 49, DB: 6) | 200 OK [http://localhost/admin/surveys/1]
+
+
+Processing Admin::SurveysController#show (for 127.0.0.1 at 2009-05-31 17:10:11) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mSurvey Load (0.1ms)[0m   [0;1mSELECT * FROM "surveys" WHERE ("surveys"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering admin/surveys/show
+
+ActionView::TemplateError (uninitialized constant ActionView::Base::CompiledTemplates::Redcloth) on line #4 of app/views/admin/surveys/show.html.erb:
+1: <% title @survey.name %>
+2: 
+3: <p>
+4:   <%= Redcloth.new(@survey.description).to_html %>
+5: </p>
+6: 
+7: <% @survey.survey_questions.each do |question| %>
+
+    app/views/admin/surveys/show.html.erb:4
+
+Rendered rescues/_trace (85.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing Admin::SurveysController#show (for 127.0.0.1 at 2009-05-31 17:10:17) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mSurvey Load (0.1ms)[0m   [0mSELECT * FROM "surveys" WHERE ("surveys"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering admin/surveys/show
+
+ActionView::TemplateError (uninitialized constant ActionView::Base::CompiledTemplates::RedCloth) on line #4 of app/views/admin/surveys/show.html.erb:
+1: <% title @survey.name %>
+2: 
+3: <p>
+4:   <%= RedCloth.new(@survey.description).to_html %>
+5: </p>
+6: 
+7: <% @survey.survey_questions.each do |question| %>
+
+    app/views/admin/surveys/show.html.erb:4
+
+Rendered rescues/_trace (33.4ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing Admin::SurveysController#show (for 127.0.0.1 at 2009-05-31 17:10:58) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mSurvey Load (0.2ms)[0m   [0;1mSELECT * FROM "surveys" WHERE ("surveys"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering admin/surveys/show
+  [4;35;1mSurveyQuestion Load (0.5ms)[0m   [0mSELECT * FROM "survey_questions" WHERE ("survey_questions".survey_id = 1) [0m
+  [4;36;1mSurveyQuestionOption Load (0.4ms)[0m   [0;1mSELECT * FROM "survey_question_options" WHERE ("survey_question_options".survey_question_id = 1) [0m
+  [4;35;1mSurveyeeAnswer Load (0.3ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 1) [0m
+  [4;36;1mSurveyeeAnswer Load (0.2ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 1) [0m
+  [4;36;1mSurveyeeAnswer Load (0.1ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 2) [0m
+  [4;35;1mSurveyQuestionOption Load (0.2ms)[0m   [0mSELECT * FROM "survey_question_options" WHERE ("survey_question_options".survey_question_id = 2) [0m
+  [4;36;1mSurveyeeAnswer Load (0.2ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 2) [0m
+  [4;35;1mSurveyeeAnswer Load (0.2ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 3) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 3) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 2) [0m
+  [4;35;1mSurveyeeAnswer Load (0.1ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 4) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 4) [0m
+  [4;36;1mSurveyQuestionOption Load (0.2ms)[0m   [0;1mSELECT * FROM "survey_question_options" WHERE ("survey_question_options".survey_question_id = 3) [0m
+  [4;35;1mSurveyeeAnswer Load (0.2ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 3) [0m
+  [4;36;1mSurveyeeAnswer Load (0.1ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 3) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 3) [0m
+  [4;36;1mSurveyeeAnswer Load (0.2ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 3) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 3) [0m
+  [4;36;1mSurveyeeAnswer Load (0.1ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 3) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 7) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 3) [0m
+  [4;36;1mSurveyeeAnswer Load (0.2ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 8) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 3) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 8) [0m
+  [4;35;1mSurveyQuestionOption Load (0.2ms)[0m   [0mSELECT * FROM "survey_question_options" WHERE ("survey_question_options".survey_question_id = 4) [0m
+  [4;36;1mSurveyeeAnswer Load (0.2ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 4) [0m
+  [4;35;1mSurveyeeAnswer Load (0.2ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 9) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 4) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 9) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 4) [0m
+  [4;35;1mSurveyeeAnswer Load (0.1ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 10) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 4) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 10) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 4) [0m
+  [4;35;1mSurveyeeAnswer Load (0.2ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 11) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 4) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 11) [0m
+  [4;36;1mSurveyQuestionOption Load (0.2ms)[0m   [0;1mSELECT * FROM "survey_question_options" WHERE ("survey_question_options".survey_question_id = 5) [0m
+  [4;35;1mSurveyeeAnswer Load (0.2ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 5) [0m
+  [4;36;1mSurveyeeAnswer Load (0.2ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 12) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 5) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 12) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 5) [0m
+  [4;36;1mSurveyeeAnswer Load (0.1ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 13) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 5) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 13) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 5) [0m
+  [4;36;1mSurveyeeAnswer Load (0.2ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 14) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 5) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 14) [0m
+  [4;35;1mSurveyQuestionOption Load (0.2ms)[0m   [0mSELECT * FROM "survey_question_options" WHERE ("survey_question_options".survey_question_id = 6) [0m
+  [4;36;1mSurveyeeAnswer Load (0.2ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 6) [0m
+  [4;35;1mSurveyeeAnswer Load (0.2ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 15) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 15) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 6) [0m
+  [4;35;1mSurveyeeAnswer Load (0.1ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 16) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 16) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 6) [0m
+  [4;35;1mSurveyeeAnswer Load (0.2ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 17) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 6) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "surveyee_answers" WHERE (survey_question_option_id = 17) [0m
+  [4;36;1mSurveyeeAnswer Load (0.2ms)[0m   [0;1mSELECT * FROM "surveyee_answers" WHERE ("surveyee_answers"."survey_question_id" = 7) [0m
+Completed in 128ms (View: 112, DB: 6) | 200 OK [http://localhost/admin/surveys/1]
+
+
+Processing Admin::SurveysController#index (for 127.0.0.1 at 2009-05-31 17:11:30) [GET]
+  [4;35;1mSurvey Load (0.5ms)[0m   [0mSELECT * FROM "surveys" [0m
+Rendering template within layouts/application
+Rendering admin/surveys/index
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(*) AS count_all FROM "surveyees" WHERE ("surveyees".survey_id = 1) [0m
+Completed in 13ms (View: 8, DB: 1) | 200 OK [http://localhost/admin/surveys]
+
+
+Processing SurveyController#index (for 127.0.0.1 at 2009-05-31 17:11:32) [GET]
+  Parameters: {"unique_code"=>"143f9f7499a07e4621c7d43a868a93ce78433d59"}
+  [4;35;1mSurvey Load (0.2ms)[0m   [0mSELECT * FROM "surveys" WHERE ("surveys"."unique_code" = '143f9f7499a07e4621c7d43a868a93ce78433d59') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering survey/index
+Completed in 16ms (View: 8, DB: 0) | 200 OK [http://localhost/survey/143f9f7499a07e4621c7d43a868a93ce78433d59]
+
+
+Processing SurveyController#index (for 127.0.0.1 at 2009-05-31 17:11:53) [GET]
+  Parameters: {"unique_code"=>"143f9f7499a07e4621c7d43a868a93ce78433d59"}
+  [4;36;1mSurvey Load (0.2ms)[0m   [0;1mSELECT * FROM "surveys" WHERE ("surveys"."unique_code" = '143f9f7499a07e4621c7d43a868a93ce78433d59') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering survey/index
+Completed in 15ms (View: 7, DB: 0) | 200 OK [http://localhost/survey/143f9f7499a07e4621c7d43a868a93ce78433d59]
+
+
+Processing SurveyController#index (for 127.0.0.1 at 2009-05-31 17:12:01) [GET]
+  Parameters: {"unique_code"=>"143f9f7499a07e4621c7d43a868a93ce78433d59"}
+  [4;35;1mSurvey Load (0.2ms)[0m   [0mSELECT * FROM "surveys" WHERE ("surveys"."unique_code" = '143f9f7499a07e4621c7d43a868a93ce78433d59') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering survey/index
+Completed in 63ms (View: 54, DB: 0) | 200 OK [http://localhost/survey/143f9f7499a07e4621c7d43a868a93ce78433d59]
+
+
+Processing SurveyController#index (for 127.0.0.1 at 2009-05-31 17:12:20) [GET]
+  Parameters: {"unique_code"=>"143f9f7499a07e4621c7d43a868a93ce78433d59"}
+  [4;36;1mSurvey Load (0.2ms)[0m   [0;1mSELECT * FROM "surveys" WHERE ("surveys"."unique_code" = '143f9f7499a07e4621c7d43a868a93ce78433d59') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering survey/index
+Completed in 13ms (View: 4, DB: 0) | 200 OK [http://localhost/survey/143f9f7499a07e4621c7d43a868a93ce78433d59]
+
+
+Processing SurveyController#index (for 127.0.0.1 at 2009-05-31 17:12:22) [GET]
+  Parameters: {"unique_code"=>"143f9f7499a07e4621c7d43a868a93ce78433d59"}
+  [4;35;1mSurvey Load (0.2ms)[0m   [0mSELECT * FROM "surveys" WHERE ("surveys"."unique_code" = '143f9f7499a07e4621c7d43a868a93ce78433d59') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering survey/index
+Completed in 12ms (View: 4, DB: 0) | 200 OK [http://localhost/survey/143f9f7499a07e4621c7d43a868a93ce78433d59]
+
+
+Processing SurveyController#index (for 127.0.0.1 at 2009-05-31 17:13:38) [GET]
+  Parameters: {"unique_code"=>"143f9f7499a07e4621c7d43a868a93ce78433d59"}
+  [4;36;1mSurvey Load (0.2ms)[0m   [0;1mSELECT * FROM "surveys" WHERE ("surveys"."unique_code" = '143f9f7499a07e4621c7d43a868a93ce78433d59') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering survey/index
+Completed in 14ms (View: 6, DB: 0) | 200 OK [http://localhost/survey/143f9f7499a07e4621c7d43a868a93ce78433d59]
+
+
+Processing SurveyController#index (for 127.0.0.1 at 2009-05-31 17:14:05) [GET]
+  Parameters: {"unique_code"=>"143f9f7499a07e4621c7d43a868a93ce78433d59"}
+  [4;35;1mSurvey Load (0.2ms)[0m   [0mSELECT * FROM "surveys" WHERE ("surveys"."unique_code" = '143f9f7499a07e4621c7d43a868a93ce78433d59') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering survey/index
+Completed in 14ms (View: 6, DB: 0) | 200 OK [http://localhost/survey/143f9f7499a07e4621c7d43a868a93ce78433d59]
