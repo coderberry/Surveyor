@@ -9,7 +9,7 @@
   <% if question.response_type == "OPTION" %>
     <% question.survey_question_options.each do |option| %>
       <% if question.responses.count > 0 %>
-        <%= number_to_percentage(option.answers.count.to_f / question.responses.count.to_f, :precision => 0) %> (<%= option.answers.count %>)
+        <%= number_to_percentage((option.answers.count.to_f / question.responses.count.to_f * 100), :precision => 0) %> (<%= option.answers.count %>)
       <% end %>
       <%= option.question_response %><br/>
     <% end %>

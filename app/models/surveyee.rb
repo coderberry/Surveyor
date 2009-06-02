@@ -1,6 +1,6 @@
 class Surveyee < ActiveRecord::Base
   belongs_to :survey
-  has_many :surveyee_answers
+  has_many :surveyee_answers, :dependent => :destroy
   validates_presence_of :name, :email, :survey_id
   validates_uniqueness_of :email, :scope => :survey_id, :message => "has already registered"
   

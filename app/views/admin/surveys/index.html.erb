@@ -16,8 +16,8 @@
         <td><%=h survey.surveyees.count %></td>
         <td><%= link_to "Go To Survey", survey_url(survey.unique_code) %></td>
         <td>
-          <%= link_to "Builder", admin_survey_survey_questions_path(survey) %> |
           <%= link_to "Show", [:admin, survey] %> |
+          <%= link_to "Builder", admin_survey_survey_questions_path(survey) %> |
           <%= link_to "Edit", edit_admin_survey_path(survey) %> |
           <%= link_to "Destroy", [:admin, survey], :confirm => 'Are you sure?', :method => :delete %>
         </td>
