@@ -6,6 +6,7 @@
       <th scope="col">Name</th>
       <th scope="col">Responses</th>
       <th scope="col">URL</th>
+      <th scope="col">Results</th>
       <th scope="col" width="200">Actions</th>
     </tr>
   </thead>
@@ -15,6 +16,7 @@
         <td><%=h survey.name %></td>
         <td><%=h survey.surveyees.count %></td>
         <td><%= link_to "Go To Survey", survey_url(survey.unique_code) %></td>
+        <td><%= link_to "View Results", admin_survey_surveyees_path(survey) %></td>
         <td>
           <%= link_to "Show", [:admin, survey] %> |
           <%= link_to "Builder", admin_survey_survey_questions_path(survey) %> |

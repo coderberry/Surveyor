@@ -1,0 +1,28 @@
+<% title @survey.name %>
+<div style="float:right; clear:right"><%= link_to "CSV", admin_survey_surveyees_path(@survey, :format => "csv")%></div>
+<h3>Responses: <%=@respondants.size%></h3>
+
+<table class="hor-minimalist-b" width="100%" style="float:right">
+  <thead>
+    <tr>
+      <td scope="col">Name</td>
+      <td scope="col">Email</td>
+      <% @survey.survey_questions.each do |question| %>
+        <td scope="col"><%=h question.question %></td>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @respondants.each do |surveyee| %>
+      <tr class="<%= cycle('odd', 'even') %>">
+        <td nowrap><%=h surveyee.name %></td>
+        <td><%=h surveyee.email %></td>
+        <% @survey.survey_questions.each do |question| %>
+        <td><%= @answers[surveyee.id][question.question] %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p><%= link_to "Back to Surveys", admin_surveys_path %></p>

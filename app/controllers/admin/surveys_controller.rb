@@ -41,4 +41,5 @@ class Admin::SurveysController < AdminController
     flash[:notice] = "Successfully destroyed survey."
     redirect_to admin_surveys_path
   end
+  
 end
