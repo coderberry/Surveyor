@@ -30,6 +30,13 @@ class Admin::SurveyeesController < ApplicationController
     end
   end
 
+  def destroy
+    @surveyee = Surveyee.find(params[:id])
+    @surveyee.destroy
+    flash[:notice] = "Successfully destroyed resonse."
+    redirect_to admin_survey_surveyees_path(@survey)
+  end
+
   private
 
   def load_survey

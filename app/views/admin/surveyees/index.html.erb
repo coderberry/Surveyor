@@ -20,6 +20,9 @@
         <% @survey.survey_questions.each do |question| %>
         <td><%= @answers[surveyee.id][question.question] %></td>
         <% end %>
+        <td>
+          <%= link_to "Destroy", admin_survey_surveyee_path(@survey, surveyee), :confirm => 'Are you sure?', :method => :delete %>
+        </td>
       </tr>
     <% end %>
   </tbody>
