@@ -1,14 +1,15 @@
 <% title @survey.name %>
 <div style="float:right; clear:right"><%= link_to "CSV", admin_survey_surveyees_path(@survey, :format => "csv")%></div>
+
 <h3>Responses: <%=@respondants.size%></h3>
 
-<table class="hor-minimalist-b" width="100%" style="float:right">
+<table class="hor-minimalist-b" width="100%">
   <thead>
     <tr>
-      <td scope="col">Name</td>
-      <td scope="col">Email</td>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
       <% @survey.survey_questions.each do |question| %>
-        <td scope="col"><%=h question.question %></td>
+        <th scope="col"><%=h question.question %></th>
       <% end %>
     </tr>
   </thead>
