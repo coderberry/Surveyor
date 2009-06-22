@@ -92,3 +92,9 @@ fieldset.form {
 	background-color: #efefef;
 	border: 0px;
 }
+
+div.name {
+	font-size:20pt; 
+	font-weight: bold;
+	margin-top:0px;
+}
