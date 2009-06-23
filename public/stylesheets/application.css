@@ -93,8 +93,16 @@ fieldset.form {
 	border: 0px;
 }
 
-div.name {
-	font-size:20pt; 
+#instructors div.name {
+	font-size: 16pt; 
 	font-weight: bold;
-	margin-top:0px;
+	margin: 0px;
+	padding: 0px;
+}
+#instructors img {
+	margin-right: 10px;
+}
+#instructors p {
+	font-size: 10pt;
+	margin: 3px 0 6px 0;
 }
